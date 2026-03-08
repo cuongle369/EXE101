@@ -2,7 +2,7 @@
 // Tự động chọn backend URL: local dev hoặc Render production
 const API = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1'
     ? 'http://localhost:8000'
-    : 'https://ai-task-manager-backend.onrender.com';
+    : 'https://exe101-qkxw.onrender.com';
 const COLORS = ['#2563EB', '#7C3AED', '#EC4899', '#10B981', '#F59E0B', '#EF4444', '#06B6D4', '#8B5CF6', '#F97316', '#14B8A6'];
 
 // ====== STATE ======
