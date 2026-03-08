@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+
+<html lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Task Details and Chat</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@100..900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark text-slate-900 dark:text-slate-100 font-display min-h-screen flex flex-col overflow-hidden">
+<!-- Top Navigation -->
+<header class="flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-900 px-6 py-3 shrink-0">
+<div class="flex items-center gap-4">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined text-3xl">task_alt</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">TaskAI</h2>
+</div>
+<div class="flex flex-1 justify-end gap-8">
+<div class="hidden md:flex items-center gap-9">
+<a class="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Dashboard</a>
+<a class="text-primary text-sm font-medium leading-normal" href="#">My Tasks</a>
+<a class="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Team</a>
+<a class="text-slate-700 dark:text-slate-300 hover:text-primary transition-colors text-sm font-medium leading-normal" href="#">Settings</a>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10" data-alt="User profile picture of a woman" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBQgRRys5vFhkA4duWsML9LHQQ31glBF2iONpevlosoDyCblC7McWBkVYK2lck-W5gX7891-otlg_fhdwWS0VJIJz8rc4kTnR2fqp2gqZCeD2Vyan0hUKnKrukN27_nTiC3-l-7vZ44WoeR_dBLMi1POJ5Ou9JUltfcvD0wJpserHga9K9TXJGpMyQKVUQT4ekMHa-2FzH-AqA25p4hOcSUAVVNLUs2jTzpfEhLp80-MDj-dgzolfoK4T5RnUIuEvuddRTw5AUVPlQ");'></div>
+</div>
+</header>
+<!-- Main Layout -->
+<div class="flex flex-1 overflow-hidden">
+<!-- Task Details Column (Left/Top) -->
+<main class="flex-1 flex flex-col overflow-y-auto bg-white dark:bg-slate-900 border-r border-slate-200 dark:border-slate-800 min-w-[320px] max-w-full lg:max-w-[60%] xl:max-w-[65%]">
+<div class="p-6 md:p-8 flex flex-col h-full">
+<!-- Breadcrumbs -->
+<div class="flex flex-wrap items-center gap-2 mb-6">
+<a class="text-slate-500 dark:text-slate-400 hover:text-primary text-sm font-medium leading-normal" href="#">My Tasks</a>
+<span class="material-symbols-outlined text-slate-400 text-sm">chevron_right</span>
+<span class="text-slate-900 dark:text-white text-sm font-medium leading-normal">Website Redesign</span>
+</div>
+<!-- Title -->
+<h1 class="text-slate-900 dark:text-white tracking-tight text-3xl md:text-4xl font-bold leading-tight mb-8">Website Redesign for Q3 Launch</h1>
+<!-- Status Toggles -->
+<div class="mb-8 w-full max-w-lg">
+<div class="grid grid-cols-3 gap-1 bg-slate-100 dark:bg-slate-800 p-1 rounded-xl">
+<label class="cursor-pointer">
+<input class="peer sr-only" name="status" type="radio" value="not-started"/>
+<div class="flex items-center justify-center py-2.5 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-slate-900 dark:peer-checked:text-white peer-checked:shadow-sm">
+                                Not Started
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input checked="" class="peer sr-only" name="status" type="radio" value="in-progress"/>
+<div class="flex items-center justify-center py-2.5 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-primary peer-checked:shadow-sm">
+                                In Progress
+                            </div>
+</label>
+<label class="cursor-pointer">
+<input class="peer sr-only" name="status" type="radio" value="done"/>
+<div class="flex items-center justify-center py-2.5 rounded-lg text-sm font-medium text-slate-500 dark:text-slate-400 transition-all peer-checked:bg-white dark:peer-checked:bg-slate-700 peer-checked:text-green-600 dark:peer-checked:text-green-400 peer-checked:shadow-sm">
+                                Done
+                            </div>
+</label>
+</div>
+</div>
+<!-- Task Metadata Grid -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-8 border-t border-slate-200 dark:border-slate-800 pt-8">
+<div class="space-y-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Assignee</p>
+<div class="flex items-center gap-3">
+<div class="size-8 rounded-full bg-cover bg-center" data-alt="Assignee Sarah Jenkins" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuBY9Eq465-L48YzRcgmXe2ficmi4-MIj-cBAFrBqsCPTBgaa9KFzZSkq0WYLzhk_BbXo803cBEY2TyR338QclLQNS1fNtaSqcTOEvlVQ4Uy-zd7hRQimxU3CgoNQiF_Q4-wXB9q6bQp_AZEKPG4ptp1XRShGD494S50d_zUMzcICPzgdALYTrmC5ExWJw8gZFBEQqqtyV6AsVKfM9YmM1FvucKE87QwVC-IrfgujedQBFc3V4U-N6GFVdFIVDil77Qe2z0jjpA0HkE");'></div>
+<span class="text-slate-900 dark:text-white font-medium">Sarah Jenkins</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Due Date</p>
+<div class="flex items-center gap-2 text-slate-900 dark:text-white font-medium">
+<span class="material-symbols-outlined text-slate-400">calendar_today</span>
+<span>Oct 15, 2023</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Priority</p>
+<div class="flex items-center gap-2 text-orange-600 dark:text-orange-400 font-medium">
+<span class="material-symbols-outlined filled">flag</span>
+<span>High</span>
+</div>
+</div>
+<div class="space-y-1">
+<p class="text-slate-500 dark:text-slate-400 text-sm font-medium">Project</p>
+<div class="flex items-center gap-2 text-slate-900 dark:text-white font-medium">
+<span class="material-symbols-outlined text-slate-400">folder</span>
+<span>Marketing Q3</span>
+</div>
+</div>
+</div>
+<!-- Description -->
+<div class="space-y-3">
+<h3 class="text-slate-900 dark:text-white font-semibold text-lg">Description</h3>
+<div class="text-slate-600 dark:text-slate-300 leading-relaxed text-base">
+<p class="mb-4">We need to completely overhaul the landing page to match the new brand guidelines. This includes updating the typography, color palette, and hero imagery.</p>
+<ul class="list-disc pl-5 space-y-1 marker:text-primary">
+<li>Update hero section with new video background</li>
+<li>Replace all icons with the new outline set</li>
+<li>Implement dark mode toggle</li>
+<li>Ensure mobile responsiveness for all break points</li>
+</ul>
+</div>
+</div>
+<!-- Attachment Preview -->
+<div class="mt-8">
+<h3 class="text-slate-900 dark:text-white font-semibold text-lg mb-3">Attachments</h3>
+<div class="flex flex-wrap gap-4">
+<div class="border border-slate-200 dark:border-slate-700 rounded-lg p-3 flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="size-10 rounded bg-red-100 text-red-600 flex items-center justify-center">
+<span class="material-symbols-outlined">picture_as_pdf</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Design_Brief_v2.pdf</span>
+<span class="text-xs text-slate-500">2.4 MB</span>
+</div>
+</div>
+<div class="border border-slate-200 dark:border-slate-700 rounded-lg p-3 flex items-center gap-3 bg-slate-50 dark:bg-slate-800/50 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer">
+<div class="size-10 rounded bg-blue-100 text-blue-600 flex items-center justify-center">
+<span class="material-symbols-outlined">image</span>
+</div>
+<div class="flex flex-col">
+<span class="text-sm font-medium text-slate-900 dark:text-white">Hero_Mockup.png</span>
+<span class="text-xs text-slate-500">4.1 MB</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<!-- Chat Column (Right/Bottom) -->
+<aside class="flex flex-col w-full lg:w-[40%] xl:w-[35%] bg-slate-50 dark:bg-[#0b1219] h-full relative border-l border-slate-200 dark:border-slate-800">
+<!-- Header for Chat -->
+<div class="px-6 py-4 border-b border-slate-200 dark:border-slate-800 bg-white/50 dark:bg-slate-900/50 backdrop-blur-sm sticky top-0 z-10">
+<h3 class="font-bold text-slate-900 dark:text-white flex items-center gap-2">
+<span class="material-symbols-outlined text-slate-400">forum</span>
+                    Discussion
+                </h3>
+</div>
+<!-- AI Suggestion Banner -->
+<div class="px-4 py-3 bg-gradient-to-r from-primary/10 to-purple-500/10 border-b border-primary/20 flex flex-col gap-3 animate-pulse-slow">
+<div class="flex items-start gap-3">
+<div class="bg-gradient-to-br from-primary to-purple-600 text-white rounded-full p-1.5 shadow-md mt-0.5">
+<span class="material-symbols-outlined text-sm">auto_awesome</span>
+</div>
+<div class="flex-1">
+<p class="text-sm text-slate-800 dark:text-slate-100 font-medium">AI Suggestion</p>
+<p class="text-sm text-slate-600 dark:text-slate-300 mt-1">Based on recent messages, the deadline seems to have changed to <span class="font-bold text-slate-900 dark:text-white">Oct 20, 2023</span>. Would you like to update the task?</p>
+</div>
+</div>
+<div class="flex gap-3 pl-11">
+<button class="px-4 py-1.5 bg-primary hover:bg-primary/90 text-white text-xs font-medium rounded-full shadow-sm transition-colors">Accept Update</button>
+<button class="px-4 py-1.5 bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-300 text-xs font-medium rounded-full transition-colors">Ignore</button>
+</div>
+</div>
+<!-- Messages Area -->
+<div class="flex-1 overflow-y-auto p-4 space-y-6">
+<!-- Date Separator -->
+<div class="flex items-center justify-center">
+<span class="text-xs font-medium text-slate-400 bg-slate-100 dark:bg-slate-800 px-3 py-1 rounded-full">Today</span>
+</div>
+<!-- Message 1 -->
+<div class="flex gap-3">
+<div class="size-8 rounded-full bg-cover bg-center shrink-0" data-alt="Team Lead Mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC9k_2Cg157Ode1HVa9Re5nrCSjuzv--ecMHH80Tbhec00JBv6J9Lh6eVidE7a0TJ-FMnJApj6E5yF66PGeQizlTXCcABENm7ofoGmw0s5Nu4tRVx1SA8PeXR_7w6OVVex7_FZcWU8tFoqVFo81M6zALmu2Q7vzyTEnTBrnmpstDoziaJ9tbxo_GU2dD7ZDy3VKlvM1P455POp6sM9AQBA4dPnuh4GqmWsPDxTlUxT4QNA7tUXhjxYCHhyyxPC1UXZl7CWnNTd7ztw");'></div>
+<div class="flex flex-col gap-1 max-w-[85%]">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Mark (Lead)</span>
+<span class="text-xs text-slate-500">10:23 AM</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 dark:border-slate-700 text-sm text-slate-700 dark:text-slate-200">
+                            Hey Sarah, quick update on the timeline. The client just pushed the review meeting to next Friday.
+                        </div>
+</div>
+</div>
+<!-- Message 2 (Me) -->
+<div class="flex gap-3 flex-row-reverse">
+<div class="size-8 rounded-full bg-cover bg-center shrink-0" data-alt="My Avatar" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuC_QORxgyfE7ng94v2KpkfsaWD5vBL40V_fwg9cIs_nS5QCkmAEO2oO_6IM2r0JB2im3BpW92r9pvVv48V7a6JUIGW8aktCRMBRGmatY3LPEjd7vzD2dQk4BueTL0yATNB_vxoXlnWAhUYkGWO4HgiXEShY4n70yh5yHabKl1JxlbCdShyPwxBPO5DSRfddDW1knZcjNfWaeSoTal17h0fbVVBPU6bII95GiZetxogf5_7q0QQ2R5Yjme3dWRgdJSzXbkuM16ZfdxU");'></div>
+<div class="flex flex-col gap-1 items-end max-w-[85%]">
+<div class="flex items-baseline gap-2 flex-row-reverse">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Me</span>
+<span class="text-xs text-slate-500">10:25 AM</span>
+</div>
+<div class="bg-primary p-3 rounded-2xl rounded-tr-none shadow-sm text-sm text-white">
+                            Oh, that's great news! Does that mean we have until the 20th for the final deliverable?
+                        </div>
+</div>
+</div>
+<!-- Message 3 -->
+<div class="flex gap-3">
+<div class="size-8 rounded-full bg-cover bg-center shrink-0" data-alt="Team Lead Mark" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuCQWfHWgyOjX9gikDRoTyWqyDLqLCezzYgt0dcnRoTxe5CzVmkDTuebh0EFqA6xFIemkDCnundMIpH7u_eZU9DiiTLP392KYJkrJ7IDNOSMW50LRxQbdnvkD-bXsjPr_aLJoKqJ43vqpZFXdDIyFTsTtXYtq3AoKTKuOTL2zw1fZ8eEgboqdkDpiIXl02c-tHZtzATDmk3lg2I1v6flZ7XziIy7QAcvEWKPubzTSOcH3qCqD6PXcCnBmF3vuJryt4jARbvLZh8alQM");'></div>
+<div class="flex flex-col gap-1 max-w-[85%]">
+<div class="flex items-baseline gap-2">
+<span class="text-sm font-semibold text-slate-900 dark:text-white">Mark (Lead)</span>
+<span class="text-xs text-slate-500">10:26 AM</span>
+</div>
+<div class="bg-white dark:bg-slate-800 p-3 rounded-2xl rounded-tl-none shadow-sm border border-slate-100 dark:border-slate-700 text-sm text-slate-700 dark:text-slate-200">
+                            Exactly. Oct 20th is the new target.
+                        </div>
+</div>
+</div>
+</div>
+<!-- Input Area -->
+<div class="p-4 bg-white dark:bg-slate-900 border-t border-slate-200 dark:border-slate-800">
+<div class="relative flex items-end gap-2 bg-slate-100 dark:bg-slate-800 rounded-xl p-2 pr-2">
+<button class="p-2 text-slate-400 hover:text-slate-600 dark:hover:text-slate-200 transition-colors rounded-lg hover:bg-slate-200 dark:hover:bg-slate-700 shrink-0">
+<span class="material-symbols-outlined text-xl">add_circle</span>
+</button>
+<textarea class="w-full bg-transparent border-none text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:ring-0 resize-none py-2.5 max-h-32" placeholder="Type a message..." rows="1"></textarea>
+<button class="p-2 bg-primary hover:bg-primary/90 text-white rounded-lg shadow-sm transition-colors shrink-0">
+<span class="material-symbols-outlined text-xl">send</span>
+</button>
+</div>
+<p class="text-[10px] text-center text-slate-400 mt-2">AI assistant is active and monitoring for task updates.</p>
+</div>
+</aside>
+</div>
+</body></html>

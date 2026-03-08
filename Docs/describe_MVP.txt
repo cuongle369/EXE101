@@ -1,0 +1,202 @@
+AI Task Manager (MVP) – Giải thích tổng quan
+1. Bản chất sản phẩm là gì?
+
+AI Task Manager không phải chỉ là một app quản lý việc.
+
+Nó là:
+
+Một hệ thống chuyển đổi ngôn ngữ tự nhiên → dữ liệu cấu trúc → phân bổ khối lượng công việc tự động.
+
+Trọng tâm không phải UI, mà là AI Distribution Engine.
+
+2. Vấn đề sản phẩm giải quyết
+
+Trong môi trường như:
+
+Nông nghiệp
+
+Kho bãi
+
+Sản xuất nhỏ
+
+Nhóm lao động phổ thông
+
+Người trưởng nhóm thường:
+
+Giao việc bằng lời nói
+
+Giao khối lượng lớn (50 tấn, 200 bao, 3 khu vực)
+
+Phải tự chia tay từng người
+
+Không có hệ thống theo dõi
+
+AI Task Manager:
+
+Hiểu câu nói tự nhiên
+
+Trích xuất số lượng
+
+Tự động chia đều
+
+Hiển thị phần việc cụ thể cho từng người
+
+3. MVP đang tập trung vào điều gì?
+
+MVP KHÔNG cố làm tất cả tính năng quản lý task.
+
+MVP tập trung vào 3 năng lực lõi:
+
+(1) Natural Language Parsing
+
+Ví dụ:
+
+"Thu hoạch 50 tấn cà phê trước ngày 30"
+
+AI trích xuất:
+
+title: Thu hoạch cà phê
+
+total_quantity: 50 tấn
+
+deadline: ngày 30
+
+(2) AI-Based Workload Distribution (Core)
+
+Nếu có số lượng:
+
+50 tấn
+
+5 người
+
+→ AI tính:
+
+10 tấn / người
+
+Đây là năng lực trung tâm của MVP.
+
+Không có subtask phức tạp.
+Không có cấu trúc nhiều tầng.
+Chỉ có:
+
+1 task tổng
+
+Phần việc cá nhân được tính toán
+
+4. 6 màn hình thực chất thể hiện điều gì?
+
+6 màn hình không chỉ là UI.
+
+Chúng đại diện cho 3 lớp hệ thống:
+
+Layer 1 – Identity & Role
+
+Tạo nhóm
+
+Tham gia nhóm
+
+Layer 2 – AI Interaction
+
+AI Chat & Canvas
+
+Phân tích nội dung
+
+Hiển thị cấu trúc
+
+Layer 3 – Execution & Visibility
+
+Dashboard Leader (toàn cảnh)
+
+Dashboard Member (chỉ phần của mình)
+
+Chat + Suggestion Engine
+
+5. Triết lý thiết kế (Design Philosophy)
+Accessibility First
+
+Người lớn tuổi
+
+Không quen công nghệ
+
+Không thích form phức tạp
+
+→ AI Chat thay cho form
+
+Natural Language First
+
+Thay vì:
+
+10 field input
+
+dropdown
+
+select box
+
+Chỉ cần:
+
+Gõ câu bình thường
+
+Transparency
+
+Invite code + QR
+Giống cách chia sẻ Zalo
+Không cần email, không cần onboarding phức tạp
+
+6. MVP không làm gì?
+
+Để rõ phạm vi:
+
+MVP không:
+
+Không có multi-level task tree
+
+Không có advanced KPI system
+
+Không có AI optimization phức tạp
+
+Không có dynamic rebalancing
+
+Chỉ làm:
+
+Parse → Structure → Split → Assign → Track
+
+7. Nếu nói 1 câu cho stakeholder
+
+AI Task Manager là:
+
+Một hệ thống AI giúp trưởng nhóm nói việc bằng ngôn ngữ tự nhiên và tự động chia khối lượng công việc lớn thành phần cụ thể cho từng người.
+
+
+8. Mô tả Agent AI tasks managers
+
+
+🎯 Mục tiêu chính của Agent
+Nhiệm vụ cốt lõi của Agent là biểu diễn ngôn ngữ tự nhiên (câu lệnh chat bình thường) thành dữ liệu công việc có cấu trúc để hệ thống có thể quản lý, theo dõi và phân bổ tự động.
+
+⚙️ Các luồng xử lý (Workflow) của Agent
+1. Phân tích Ngữ nghĩa (NLU) qua Gemini API Khi người dùng (Leader) nhắn một câu lệnh (VD: "Sấy 50 tấn lúa trước ngày 30"), Agent sẽ tiếp nhận và trích xuất ra 5 trường thông tin quan trọng:
+
+Tên công việc (Title): "Sấy lúa"
+Số lượng (Quantity Number): 50
+Đơn vị (Unit): "tấn"
+Hạn chót (Deadline): "trước ngày 30"
+Độ ưu tiên (Priority): Tự suy luận mức độ (high, medium, low).
+2. Khả năng Hỏi đáp & Bổ sung Ngữ cảnh (Context Continuity) Agent có một cơ chế "Smart Clarification" (Hỏi làm rõ thông minh):
+
+Nếu thiếu Hạn chót nhưng có Số lượng: Agent sẽ chủ động hỏi "Bạn muốn hoàn thành trước khi nào?".
+Nếu người dùng chat để trả lời lại (VD: "Ngày mai"), Agent có khả năng nhớ văn cảnh cũ, tự động ghép câu cũ và nối với câu mới ("Sấy 50 tấn lúa ngày mai") để cập nhật lại cấu trúc công việc hoàn chỉnh.
+3. Phân bổ Khối lượng tự động Khi Agent nhận thấy công việc có yếu tố "Số lượng cụ thể" (Ví dụ: cần làm 50 sản phẩm, nhóm có 5 người), nó sẽ tự động tính toán chia đều khối lượng công việc (mỗi người 10 sản phẩm). Nếu không có số lượng, Agent sẽ gán chung chung là "Phần việc được giao".
+
+4. Khả năng Chuyển đổi trạng thái (Self-Correction/Fallback)
+
+Xử lý chính: Gửi prompt cho Gemini AI để lấy kết quả dạng JSON.
+Dự phòng (Fallback): Nếu AI bị lỗi hoặc hết hạn ngạch API (quota), Agent sẽ tự động chuyển sang cơ chế nhận diện từ khóa thủ công (Regex) trong hệ thống Backend (File 
+
+ai_service.py
+), đảm bảo hệ thống không bao giờ bị gián đoạn.
+5. Giao tiếp UI (Canvas) Thay vì tự động tạo Task phía dưới ngầm và khiến người dùng mất kiểm soát, Agent tạo ra một bộ đệm gọi là Task Canvas. Tại đây, Agent đưa ra kết quả phân tích để người dùng dễ dàng kiểm duyệt, chỉnh sửa lại thủ công (như sửa tên, sửa deadline, chọn lại người thực hiện) trước khi chính thức bấm "Giao việc ngay".
+
+Tóm lại, Agent Task của bạn không chỉ là một cái "form nhập liệu bằng giọng nói", mà nó là một trợ lý tương tác trực tiếp, biết đòi hỏi thêm thông tin khi thiếu và biết tự động chia việc dựa trên sức người của nhóm.
+
+Bạn có muốn tôi phát triển thêm chức năng nào cho Agent này không? (Ví dụ: Thêm tính năng gợi ý chia việc theo hiệu suất của từng người (perf) thay vì chia đều?).
+

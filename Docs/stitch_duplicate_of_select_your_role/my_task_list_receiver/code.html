@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Thành Viên Task Dashboard</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@400;500;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: {"DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px"},
+                },
+            },
+        }
+    </script>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display text-slate-900 dark:text-slate-100 min-h-screen flex flex-col overflow-x-hidden">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-solid border-slate-200 dark:border-slate-800 bg-background-light dark:bg-background-dark px-6 md:px-10 py-3 shadow-sm">
+<div class="flex items-center gap-4 text-slate-900 dark:text-white">
+<div class="size-8 flex items-center justify-center text-primary">
+<span class="material-symbols-outlined !text-3xl">task_alt</span>
+</div>
+<h2 class="text-slate-900 dark:text-white text-lg font-bold leading-tight tracking-[-0.015em]">AI Task Manager</h2>
+</div>
+<div class="flex items-center gap-4">
+<div class="flex flex-col items-end mr-2">
+<span class="text-xs font-bold text-primary uppercase tracking-wider">Thành viên</span>
+<span class="text-sm font-medium text-slate-600 dark:text-slate-400">Nguyễn Văn A</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 ring-2 ring-primary/20" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAnnyJpU8bRHy1yvUbbpN85eixeBs0hKQGQzOSUSK-LMMr89uNTf0zt4PDQP2GeljgzWIaQkiP5xyYdg3XEnXtk5XkNwwm2gMElywqfpD3HiVuNoyA65YBYzz-RhOIdQlCLTE1AkpRAzijoUQNlwbPr0OT5LtoN44E5p9Icqr1SwYkEvIgnmF2RVgX0b42ILhTKrK5jrIeIuvAAN8QKhoXw7gLaj9-Rsfm3iGYNWUqaoFG8FJeiOeK-69KsRyHx6uMMW4rGddRJRy4");'></div>
+<button class="hidden md:flex min-w-[84px] cursor-pointer items-center justify-center overflow-hidden rounded-lg h-10 px-4 bg-slate-200 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-300 dark:hover:bg-slate-700 transition-colors text-sm font-bold leading-normal tracking-[0.015em]">
+<span class="truncate">Đăng xuất</span>
+</button>
+</div>
+</header>
+<main class="flex-1 flex justify-center py-8 px-4 sm:px-6 lg:px-40">
+<div class="flex flex-col max-w-[960px] w-full gap-8">
+<div class="flex flex-col sm:flex-row sm:items-end justify-between gap-4 pb-4 border-b border-slate-200 dark:border-slate-800">
+<div class="flex flex-col gap-2">
+<div class="flex items-center gap-2">
+<span class="px-2 py-0.5 rounded bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[10px] font-bold uppercase tracking-widest">Vai trò: Thành viên</span>
+</div>
+<h1 class="text-slate-900 dark:text-white text-3xl sm:text-4xl font-black leading-tight tracking-[-0.033em]">Công việc của tôi</h1>
+<p class="text-slate-500 dark:text-slate-400 text-base font-normal leading-normal">Danh sách các nhiệm vụ được phân công cho bạn.</p>
+</div>
+<div class="flex gap-3">
+<button class="flex items-center justify-center gap-2 rounded-lg h-10 px-4 bg-primary/10 text-primary hover:bg-primary/20 transition-colors text-sm font-bold">
+<span class="material-symbols-outlined text-[20px]">filter_list</span>
+<span>Lọc</span>
+</button>
+</div>
+</div>
+<section class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-red-600">warning</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Việc quá hạn</h2>
+<span class="ml-auto bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-400 text-xs font-bold px-2 py-1 rounded-full">2 Nhiệm vụ</span>
+</div>
+<div class="group flex flex-col md:flex-row items-stretch justify-between gap-0 rounded-xl bg-white dark:bg-slate-900 border-l-4 border-red-500 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<div class="flex flex-1 flex-col justify-center gap-4 p-5">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-red-100 dark:bg-red-900/30 text-red-700 dark:text-red-300 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Ưu tiên cao</span>
+<span class="text-slate-400 text-xs">Hết hạn hôm qua</span>
+</div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Dỡ hàng lô hàng #402</p>
+<p class="text-slate-700 dark:text-slate-300 text-md font-bold leading-normal mt-1">Phần của bạn: <span class="text-red-600 dark:text-red-400">50 tấn</span></p>
+</div>
+<div class="flex items-center gap-4 mt-1">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-sm font-medium gap-2">
+<span>Chi tiết</span>
+</button>
+<button class="flex flex-1 md:flex-none md:w-auto cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white hover:bg-blue-600 transition-colors text-sm font-medium gap-2 shadow-sm shadow-primary/30">
+<span>Cập nhật trạng thái</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="h-32 md:h-auto md:w-48 bg-center bg-no-repeat bg-cover md:rounded-r-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDDAWOv2zHOAjT9d872AEr7TpSZcPQLHrm-vcKxmmjjTcMK1AaIeDPiyDEpXMZRg_qrfIUliu5jQ2Y1VHAXnJjv-BlW1pQtMyqiq5mDfyo_s_BrMpIbwkdA3GawhzgUj3oFdHOAUp6ddHBX1_zRM5pw2j2Xev2urZbS4h7VGso39NZ5Y8NndWqxxoAW79awj2GGo5SdxvUxWyatZTs-saeIUDI-hRf4hKadIuSgPbovNoPdWeFNLjXdbEc3oDOPYe1_8KU5PZUZcxQ");'></div>
+</div>
+<div class="group flex flex-col md:flex-row items-stretch justify-between gap-0 rounded-xl bg-white dark:bg-slate-900 border-l-4 border-red-500 shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<div class="flex flex-1 flex-col justify-center gap-4 p-5">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="text-slate-400 text-xs">Hết hạn 2 ngày trước</span>
+</div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Kiểm tra an toàn: Khu vực B</p>
+<p class="text-slate-700 dark:text-slate-300 text-md font-bold leading-normal mt-1">Phần của bạn: <span class="text-red-600 dark:text-red-400">Hoàn thành danh mục</span></p>
+</div>
+<div class="flex items-center gap-4 mt-1">
+<button class="flex cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-slate-100 dark:bg-slate-800 text-slate-900 dark:text-white hover:bg-slate-200 dark:hover:bg-slate-700 transition-colors text-sm font-medium gap-2">
+<span>Chi tiết</span>
+</button>
+<button class="flex flex-1 md:flex-none md:w-auto cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white hover:bg-blue-600 transition-colors text-sm font-medium gap-2 shadow-sm shadow-primary/30">
+<span>Cập nhật trạng thái</span>
+<span class="material-symbols-outlined text-[18px]">arrow_forward</span>
+</button>
+</div>
+</div>
+<div class="h-32 md:h-auto md:w-48 bg-center bg-no-repeat bg-cover md:rounded-r-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDX-41zMJcSoV-z7Gs-OzLWVC8YfRSISGdW9og4VaOC7QsgYp-M8x_GMhQQn8JBAGP-srYlqx1jPba65y3B_buFzZ3KMpsRRqJN-XS5uCLoeeQhJSHXnWI5oqKjA4cOLD6HOpCQS9BBr-K0PnjrZJfU3JeMEVu13NmMywdQmfvmy33DKNmi8bB9Whvwdj1HjL4YowBNsK2-d9oj5wyPQMJfCvktr7IDkjWuWXwtHgjx-flBdu-BMmcfuuMK1t2SvuPv1Y1es8dewwk");'></div>
+</div>
+</section>
+<section class="flex flex-col gap-4 pt-4">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-primary">today</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Việc hôm nay</h2>
+<span class="ml-auto bg-primary/10 text-primary text-xs font-bold px-2 py-1 rounded-full">2 Nhiệm vụ</span>
+</div>
+<div class="group flex flex-col md:flex-row items-stretch justify-between gap-0 rounded-xl bg-white dark:bg-slate-900 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<div class="flex flex-1 flex-col justify-center gap-4 p-5">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-blue-50 dark:bg-blue-900/20 text-blue-600 dark:text-blue-300 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Đang thực hiện</span>
+<span class="text-slate-400 text-xs">Hạn chót 17:00</span>
+</div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Phân loại vật liệu tái chế Lô A</p>
+<p class="text-slate-700 dark:text-slate-300 text-md font-bold leading-normal mt-1">Phần của bạn: <span class="text-primary">12 thùng</span></p>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 rounded-full h-2.5 max-w-sm">
+<div class="bg-primary h-2.5 rounded-full" style="width: 45%"></div>
+</div>
+<div class="flex items-center gap-4 mt-1">
+<button class="flex flex-1 md:flex-none md:w-auto cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white hover:bg-blue-600 transition-colors text-sm font-medium gap-2 shadow-sm shadow-primary/30">
+<span>Tiếp tục</span>
+<span class="material-symbols-outlined text-[18px]">play_arrow</span>
+</button>
+</div>
+</div>
+<div class="h-32 md:h-auto md:w-48 bg-center bg-no-repeat bg-cover md:rounded-r-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDP6OcQ5L2XhZJilfpN3QKmtwpTigVw3lYy1utGs5Y2cKxTeYKZnJazCGPvlSlTDiNdNc2AKqLliOPUDD0ilkslGkT7186PrbLWmrjUA3CFnpTsRaltLF-RxzDYag_le3AX4YLNZtBn5vmvDAXGmkH7iZoZDwUW27Yw4L625ge9FecYvwgYimjF3ucdvAtNZVv4RI4NbzBkhB_iDvIVEgoCEcTgzjbpxhT25vshba0s1e5AfO_DaixVUhVCvAArgriryuOtjFoUq04");'></div>
+</div>
+<div class="group flex flex-col md:flex-row items-stretch justify-between gap-0 rounded-xl bg-white dark:bg-slate-900 border-l-4 border-primary shadow-sm hover:shadow-md transition-shadow overflow-hidden">
+<div class="flex flex-1 flex-col justify-center gap-4 p-5">
+<div class="flex flex-col gap-1">
+<div class="flex items-center gap-2 mb-1">
+<span class="bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-[10px] uppercase font-bold tracking-wider px-2 py-0.5 rounded">Chưa bắt đầu</span>
+</div>
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Vệ sinh kho chứa số 5</p>
+<p class="text-slate-700 dark:text-slate-300 text-md font-bold leading-normal mt-1">Phần của bạn: <span class="text-primary">Toàn bộ kho</span></p>
+</div>
+<div class="flex items-center gap-4 mt-1">
+<button class="flex flex-1 md:flex-none md:w-auto cursor-pointer items-center justify-center rounded-lg h-9 px-4 bg-primary text-white hover:bg-blue-600 transition-colors text-sm font-medium gap-2 shadow-sm shadow-primary/30">
+<span>Bắt đầu</span>
+<span class="material-symbols-outlined text-[18px]">play_circle</span>
+</button>
+</div>
+</div>
+<div class="h-32 md:h-auto md:w-48 bg-center bg-no-repeat bg-cover md:rounded-r-lg" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuAu8W315BRvDX7VIcnXcu9r2JE49jkce9y-NtQCzQZ3Gzk5XlrgUb7WSWuj8obHDOAQ0fDd9DadTTa4ybEUss0yv95h_szrqdlJK-KObTQWSR2MOHHFEhuybEs3bQCS_t7mgTNs4TFcGSKyCVN7CWhjMBw1Q1AQ21CvQPXraxaf6ZOQfTbfiGNYywlyVl9-ldubtRYHpEHwknRAUUukl0tJR7LTnMF_TD2D46kBpaxEu2qYkMMzTMZf2x1VAPSO3ZjSqBT_eMbdtGg");'></div>
+</div>
+</section>
+<section class="flex flex-col gap-4 pt-4 pb-12">
+<div class="flex items-center gap-2 px-1">
+<span class="material-symbols-outlined text-slate-400">calendar_month</span>
+<h2 class="text-slate-900 dark:text-white text-xl font-bold leading-tight">Sắp tới</h2>
+<span class="ml-auto bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400 text-xs font-bold px-2 py-1 rounded-full">2 Nhiệm vụ</span>
+</div>
+<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm opacity-90 hover:opacity-100 transition-opacity">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Kiểm kê hàng hóa: Khu vực 9</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">Ngày mai • <span class="font-bold text-slate-700 dark:text-slate-300">Phần của bạn: 500 mặt hàng</span></p>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+<div class="flex items-center justify-between gap-4 rounded-xl bg-white dark:bg-slate-900 border border-slate-200 dark:border-slate-800 p-5 shadow-sm opacity-90 hover:opacity-100 transition-opacity">
+<div class="flex flex-col gap-1">
+<p class="text-slate-900 dark:text-white text-lg font-bold leading-tight">Bảo trì khu vực bốc dỡ</p>
+<p class="text-slate-500 dark:text-slate-400 text-sm font-normal">14 Tháng 11 • <span class="font-bold text-slate-700 dark:text-slate-300">Phần của bạn: Hỗ trợ kỹ thuật viên</span></p>
+</div>
+<button class="p-2 text-slate-400 hover:text-primary transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</section>
+</div>
+</main>
+
+</body></html>

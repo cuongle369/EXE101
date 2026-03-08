@@ -1,0 +1,13 @@
+# Environment files - chứa API keys
+backend/.env
+
+# Python cache
+backend/__pycache__/
+backend/*.pyc
+
+# SQLite database - không push lên GitHub (sẽ tạo mới trên server)
+backend/ai_task_manager.db
+
+# OS files
+.DS_Store
+Thumbs.db

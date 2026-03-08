@@ -1,0 +1,269 @@
+<!DOCTYPE html>
+<html lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Trưởng Nhóm Group Dashboard - AI Task Manager</title>
+<link href="https://fonts.googleapis.com/css2?family=Lexend:wght@300;400;500;600;700;900&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    colors: {
+                        "primary": "#137fec",
+                        "primary-content": "#ffffff",
+                        "background-light": "#f6f7f8",
+                        "background-dark": "#101922",
+                        "surface-light": "#ffffff",
+                        "surface-dark": "#1a2632",
+                        "text-main": "#0f172a",
+                        "text-sub": "#64748b",
+                        "border-light": "#e2e8f0",
+                        "border-dark": "#334155"
+                    },
+                    fontFamily: {
+                        "display": ["Lexend", "sans-serif"]
+                    },
+                    borderRadius: { "DEFAULT": "0.25rem", "lg": "0.5rem", "xl": "0.75rem", "full": "9999px" },
+                },
+            },
+        }
+    </script>
+<style type="text/tailwindcss">
+        @layer utilities {
+            .circular-progress {
+                background: conic-gradient(var(--primary-color) 68%, #e2e8f0 0);
+            }
+        }
+        :root {
+            --primary-color: #137fec;
+        }
+    </style>
+</head>
+<body class="bg-background-light dark:bg-background-dark font-display antialiased min-h-screen flex flex-col">
+<header class="sticky top-0 z-50 flex items-center justify-between whitespace-nowrap border-b border-border-light dark:border-border-dark bg-surface-light/80 dark:bg-surface-dark/80 backdrop-blur-md px-6 sm:px-10 py-3">
+<div class="flex items-center gap-4 text-text-main dark:text-slate-100">
+<div class="size-8 flex items-center justify-center bg-primary rounded-lg text-white">
+<span class="material-symbols-outlined text-xl">smart_toy</span>
+</div>
+<h2 class="text-text-main dark:text-slate-100 text-lg font-bold leading-tight tracking-[-0.015em]">AI Task Manager</h2>
+</div>
+<div class="flex flex-1 justify-end gap-6 items-center">
+<nav class="hidden md:flex items-center gap-8">
+<a class="text-primary font-semibold text-sm" href="#">Bảng điều khiển</a>
+<a class="text-text-sub dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Nhóm</a>
+<a class="text-text-sub dark:text-slate-400 hover:text-primary transition-colors text-sm font-medium" href="#">Lịch sử</a>
+</nav>
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-text-sub dark:text-slate-400">
+<span class="material-symbols-outlined">notifications</span>
+</button>
+<div class="flex items-center gap-3 pl-2 border-l border-border-light dark:border-border-dark">
+<div class="text-right hidden sm:block">
+<p class="text-xs font-bold text-text-main dark:text-white leading-none">Admin User</p>
+<span class="text-[10px] font-bold text-primary uppercase tracking-wider">Trưởng nhóm</span>
+</div>
+<div class="bg-center bg-no-repeat aspect-square bg-cover rounded-full size-10 border-2 border-primary shadow-sm" style='background-image: url("https://lh3.googleusercontent.com/aida-public/AB6AXuDjcuPyT_T4zgqUE5wuTGcrAdbrdYCss5t_zuQ_JzwYTtvDyGi8aDd9vrgVOMupB-q4a7pRMNM_NbhasvWUxeHBp0sCLELfOQUsMUR35Iz84ELwStrfsYixPhHHJNqVEM6IoAIwmcVQ1Habgva3p0MNx2kOs2H91TeYIGhPdg9Ln9h8ZR3KZAAYmCqSBGFsUHk2rTvL0hfdT4J4AERKJ17-nNgv5a1mwFIHAGNkNO1GdyMHzs85lAEQt3hERHcYYz99Q9FthJnM1A");'></div>
+</div>
+</div>
+</div>
+</header>
+<section class="bg-surface-light dark:bg-surface-dark border-b border-border-light dark:border-border-dark px-6 sm:px-10 py-4">
+<div class="max-w-[1200px] mx-auto flex flex-col md:flex-row md:items-center justify-between gap-4">
+<div class="flex items-center gap-4">
+<div>
+<nav class="flex items-center gap-2 text-xs text-text-sub mb-1">
+<span>Nhóm</span>
+<span class="material-symbols-outlined text-[14px]">chevron_right</span>
+<span class="text-primary">Đội Thu Hoạch A</span>
+</nav>
+<h1 class="text-2xl font-black text-text-main dark:text-white flex items-center gap-3">
+                    Đội Thu Hoạch A
+                    <span class="text-xs font-bold bg-green-100 text-green-700 px-2 py-0.5 rounded-full uppercase tracking-wider">Đang hoạt động</span>
+</h1>
+</div>
+</div>
+<div class="flex items-center gap-3">
+<button class="flex items-center gap-2 px-4 py-2 bg-slate-50 dark:bg-slate-800 border border-border-light dark:border-border-dark rounded-lg text-sm font-semibold text-text-main dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all">
+<span class="material-symbols-outlined text-lg">qr_code_2</span>
+                Mã mời: <span class="text-primary tracking-widest font-mono">HV-9921</span>
+</button>
+<button class="flex items-center gap-2 px-5 py-2.5 bg-primary text-white rounded-lg text-sm font-bold shadow-lg shadow-blue-500/20 hover:bg-blue-600 active:scale-95 transition-all">
+<span class="material-symbols-outlined text-lg">add_circle</span>
+                Thêm công việc bằng AI
+            </button>
+</div>
+</div>
+</section>
+<main class="flex-1 max-w-[1200px] mx-auto w-full py-8 px-6 sm:px-10">
+<div class="grid grid-cols-1 lg:grid-cols-12 gap-8">
+<div class="lg:col-span-4 flex flex-col gap-6">
+<div class="bg-surface-light dark:bg-surface-dark p-8 rounded-2xl border border-border-light dark:border-border-dark shadow-sm">
+<h3 class="text-lg font-bold text-text-main dark:text-slate-100 mb-6">Tiến độ nhóm</h3>
+<div class="flex flex-col items-center justify-center py-4">
+<div class="relative size-48 rounded-full flex items-center justify-center circular-progress">
+<div class="absolute inset-4 bg-surface-light dark:bg-surface-dark rounded-full flex flex-col items-center justify-center">
+<span class="text-4xl font-black text-text-main dark:text-white leading-none">68%</span>
+<span class="text-xs text-text-sub font-medium uppercase tracking-widest mt-1">Hoàn thành</span>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-2 gap-4 mt-8 pt-8 border-t border-border-light dark:border-border-dark">
+<div class="flex flex-col">
+<span class="text-xs text-text-sub font-medium">Tổng công việc</span>
+<span class="text-xl font-bold text-text-main dark:text-white">12</span>
+</div>
+<div class="flex flex-col">
+<span class="text-xs text-text-sub font-medium">Đang thực hiện</span>
+<span class="text-xl font-bold text-text-main dark:text-white text-primary">4</span>
+</div>
+</div>
+<div class="mt-6 p-4 bg-blue-50 dark:bg-primary/10 rounded-xl border border-primary/20">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-primary">auto_awesome</span>
+<p class="text-xs text-primary font-medium leading-relaxed">AI dự báo sẽ hoàn thành vào ngày 28 tháng 10 dựa trên tốc độ hiện tại.</p>
+</div>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-6 rounded-2xl border border-border-light dark:border-border-dark shadow-sm">
+<div class="flex items-center justify-between mb-4">
+<h3 class="font-bold text-text-main dark:text-slate-100">Thành viên nhóm</h3>
+<button class="text-xs text-primary font-bold hover:underline">Quản lý</button>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="size-8 rounded-full border border-border-light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCziU1gaSnBRVlRAn8hTXFuzrR5sTbBnXy2M_485TY51_Cyrb34dqiV7K2AZMiWd4a1Gaa7cdWrCL3WqU05Ftoza7GsWjCFwgz47OVPJIi0kIjiOIdANIRYr6e3McuLk9XAHCrWVp3iclro0MjmVToL0Qj94BZkrD29PjRYMsfHSe8dvUUMwNrkAEQpkNeGoZjQh5_mdw723bZVnvmYHs_TmpdVF2sa96FFLluaW6ewtwuDS75xWzeZfj4AkvDCS7_HF7-lQWZkHw"/>
+<span class="text-sm font-medium text-text-main dark:text-slate-200">Alex Johnson</span>
+</div>
+<span class="text-xs font-bold text-slate-400">85% Hiệu suất</span>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex items-center gap-3">
+<img alt="Avatar" class="size-8 rounded-full border border-border-light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBoucEWBQyP7nUzSp6ypBZUwnD6q-jxi4jV4ZMDXvsxq9ECEB5wXKM4OZE79lyXFQwGXK5iA7zMBBuYQA6cHxsp8RAziW29JqHSpDSFV9x3zy543kDZpro05JKsLBEnjKaSRknZihPRojCkD3xmckTN82uduB4lK2wa9sfc_CgC43lkqGOHR7ShwsTh35aoUXeHXxIyaTByPg96WWQAYDzf-ZHmGmQ6MSnU2GnvYBcp8guY9CSyP_x8oHees_ORRgXrisONJ6n6Zw"/>
+<span class="text-sm font-medium text-text-main dark:text-slate-200">Maria Santos</span>
+</div>
+<span class="text-xs font-bold text-slate-400">92% Hiệu suất</span>
+</div>
+</div>
+</div>
+</div>
+<div class="lg:col-span-8">
+<div class="flex flex-col gap-8">
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-2">
+<span class="material-symbols-outlined text-orange-500 fill-1">agriculture</span>
+<h4 class="font-bold text-text-main dark:text-slate-100">Giai đoạn 1: Hoạt động Thu hoạch</h4>
+<span class="ml-auto text-xs font-semibold text-text-sub bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">2 Đang chạy</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h5 class="font-bold text-text-main dark:text-slate-100 group-hover:text-primary transition-colors">Thu gom Cánh đồng phía Tây</h5>
+<p class="text-xs text-text-sub mt-0.5">Hạn chót: 15 Th 10</p>
+</div>
+<span class="text-[10px] font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded">Cao</span>
+</div>
+<div class="mb-4">
+<div class="flex justify-between text-xs font-bold mb-1.5">
+<span class="text-text-sub">Khối lượng</span>
+<span class="text-text-main dark:text-slate-200">32/50 tấn</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[64%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="m1" class="size-7 rounded-full border-2 border-surface-light dark:border-surface-dark shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBV3ySyjx0f5cuD8ZdZMPDrNUVuC3IU8IgL1UYF2_WlQX74GlvWxeFR3pFN4pW1cyaSLDfjO0_i7M0Ya-9PyCqFWZe1mYjWOfffBeT51B4a6i7_cbE0FaSHq1m_3M85ES7TPpjTTNEFHJatTdNTxs5DnALMY22XIdxQPD4s-jxkh7CEkrD7e24azNCcM0bmRWw752c8a63Ni6-qj0dZaJQh0f2JRQhzDZBSlDLkpfojIBfLzDb7Foh2uz8--cdAYgX0ia0FgM7Szg"/>
+<img alt="m2" class="size-7 rounded-full border-2 border-surface-light dark:border-surface-dark shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCpOEH59vS7ZBlm0pchDYeSOePq6HKLD1GpC5K263vRzaxpA8uD1iyJbLKjHDbH9pJyVpxEAE7H7QZl3cAE-6MwvmWeu8GZJ4T5m7zrWDU2rzwYqYUNDONP3z2h-Z_8X0lUAmg8MkiLHo9bKz_v-tCWKwtZRNI7epmxsRWoWfvlqg1534xWYlwaDv6rgEFjMHmqidcNTj7P8LRdxS6aXI7I_pwiaW6mXNe3uI0hF7tIfS0Pe1Ypml321LOTtwlxHfocaGNPBfi3Bw"/>
+<div class="size-7 rounded-full bg-slate-100 dark:bg-slate-700 flex items-center justify-center text-[10px] font-bold text-slate-500 border-2 border-surface-light dark:border-surface-dark">+2</div>
+</div>
+<button class="text-text-sub hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</div>
+</div>
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h5 class="font-bold text-text-main dark:text-slate-100 group-hover:text-primary transition-colors">Hái Quả mọng (Cấp độ A)</h5>
+<p class="text-xs text-text-sub mt-0.5">Hạn chót: 16 Th 10</p>
+</div>
+<span class="text-[10px] font-black uppercase bg-slate-100 text-slate-500 px-2 py-0.5 rounded">Trung bình</span>
+</div>
+<div class="mb-4">
+<div class="flex justify-between text-xs font-bold mb-1.5">
+<span class="text-text-sub">Khối lượng</span>
+<span class="text-text-main dark:text-slate-200">12/20 thùng</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[60%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="m3" class="size-7 rounded-full border-2 border-surface-light dark:border-surface-dark shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB7LD4y5RuTL1sBx-6rTaYS03SK_JuGtx2MgnFhVLHDMVBIy-a9hwZ0RdmpnObrFKclbEKkB3NLdiRqCqLQXdvV4ceN2J227WLIiHjEMrMIC-GK_zGqGWF_ayCfDBCKehesZd7xX9YVdPfmI1jP_60dkF7Hjk61Z8NRzSNPfsDlv3GYcDXlrTmAz-1cI-Xg_QTgPaaLw9KxTWgIV-iSLq4Avm2feMH2l3xLRBs-baYcKkNmK0a8lqU2ZsBjgGX25e16D8kX2X7EUg"/>
+<img alt="m4" class="size-7 rounded-full border-2 border-surface-light dark:border-surface-dark shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA-HuA8K4X9yo2jmVJRNkbdKckKEq0fYXxCG6j5O5qDTaBGywGDS9pduwcJCbg7YB3fH8Jg0urKoJDc160OfEOxU9t_b9PVc9rBwL4bmF_Oo8CLhAF_ZBTlYMoTOrtDY-i6ek0aM5z79KqkFG0AY4eX-dGpA5xPydUANZ8W8sMtTY-aCJeSONOEbtCevedLTNx_zF6GqVFNv_CpCh_azA76VaiO8AHSpV3uBNT-2zRDUVwdwOt-DGXJnWrVvjfs-pV9JB_YdDzgHw"/>
+</div>
+<button class="text-text-sub hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</div>
+</div>
+</div>
+</div>
+<div class="flex flex-col gap-4">
+<div class="flex items-center gap-2 px-2">
+<span class="material-symbols-outlined text-purple-500 fill-1">conveyor_belt</span>
+<h4 class="font-bold text-text-main dark:text-slate-100">Giai đoạn 2: Phân loại &amp; Chế biến</h4>
+<span class="ml-auto text-xs font-semibold text-text-sub bg-slate-100 dark:bg-slate-800 px-2 py-0.5 rounded">1 Đang chạy</span>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 gap-4">
+<div class="bg-surface-light dark:bg-surface-dark p-5 rounded-xl border border-border-light dark:border-border-dark shadow-sm hover:border-primary transition-colors cursor-pointer group">
+<div class="flex justify-between items-start mb-4">
+<div>
+<h5 class="font-bold text-text-main dark:text-slate-100 group-hover:text-primary transition-colors">Kiểm định Chất lượng</h5>
+<p class="text-xs text-text-sub mt-0.5">Hạn chót: 20 Th 10</p>
+</div>
+<span class="text-[10px] font-black uppercase bg-primary/10 text-primary px-2 py-0.5 rounded">Cao</span>
+</div>
+<div class="mb-4">
+<div class="flex justify-between text-xs font-bold mb-1.5">
+<span class="text-text-sub">Khối lượng</span>
+<span class="text-text-main dark:text-slate-200">5/50 lượt kiểm</span>
+</div>
+<div class="w-full bg-slate-100 dark:bg-slate-800 h-2 rounded-full overflow-hidden">
+<div class="bg-primary h-full w-[10%]"></div>
+</div>
+</div>
+<div class="flex items-center justify-between">
+<div class="flex -space-x-2">
+<img alt="m5" class="size-7 rounded-full border-2 border-surface-light dark:border-surface-dark shadow-sm" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBeCulX5cxDAoIBYLPKtTQURJ53vMANABWkcbd4Rgjp-0LKtE-kasQmwo1144buwY1OoTK9D_t79IYwBOGCLn2ZVcoSKtzf8-LhDMOYrZx9A3_Cdj6qXyge1L-kFUHDqbwSMXWAy4Dh6V8YqjSI0ukQsrOMa36FqLzayVhDu-doAPqYdj9oPHoE1xj7nfYXsg_HlimXw_yF9jcXJPkrszyjBK3EaGALrPgHYl8eLmy93sQp6lfcbt-IPaynx6PfLROvcCXu7SeIow"/>
+</div>
+<button class="text-text-sub hover:text-primary"><span class="material-symbols-outlined text-lg">more_horiz</span></button>
+</div>
+</div>
+<div class="border-2 border-dashed border-border-light dark:border-border-dark rounded-xl flex items-center justify-center p-5 group hover:border-primary/50 transition-colors cursor-pointer">
+<div class="flex flex-col items-center gap-1 opacity-40 group-hover:opacity-100 transition-opacity">
+<span class="material-symbols-outlined">add_task</span>
+<span class="text-xs font-bold uppercase tracking-widest">Công việc phụ mới</span>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</div>
+</main>
+<footer class="mt-auto border-t border-border-light dark:border-border-dark bg-white dark:bg-surface-dark py-6 px-10">
+<div class="max-w-[1200px] mx-auto flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-text-sub font-medium">
+<p>© 2024 AI Task Manager. Được vận hành bởi Hệ thống Lập lịch Thông minh.</p>
+<div class="flex items-center gap-6">
+<a class="hover:text-primary" href="#">Trung tâm Hỗ trợ</a>
+<a class="hover:text-primary" href="#">Tài liệu API</a>
+<a class="hover:text-primary" href="#">Chính sách Bảo mật</a>
+</div>
+</div>
+</footer>
+
+</body></html>
